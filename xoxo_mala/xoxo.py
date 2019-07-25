@@ -15,7 +15,7 @@ class Igra:
 
     def mreza_ustvari(self):
         mreza_n = []
-        for i in range(3):
+        for _ in range(3):
             mreza_n.append([0, 0, 0])
         return mreza_n
 

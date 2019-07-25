@@ -27,7 +27,7 @@ def zacni_igro():
     if igra_1.zmaga():
         igra_1.O_X()
         print('Zmagovalec je {}'.format(igra_1.navrsti))
-        inp = input('Za izhod pritisnite enter!  ')
+        _ = input('Za izhod pritisnite enter!  ')
     else:
         print('Oba sta zmagovalca!')
 
