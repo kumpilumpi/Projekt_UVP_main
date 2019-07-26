@@ -25,16 +25,16 @@
 
     <hr>
 
-    % if slaba: 
+% if slaba: 
 
     <p>Neveljavna poteza!</p>
     <p>Poskusite ponovno.</p>
 
-    % endif 
+% endif 
     
     <p> Na potezi je {{igra.navrsti}} </p>
 
-    % if naslednja == 10 
+% if naslednja == 10:
 
     <form action="/igra/{{id_igre}}/" method="post">
         Mreža: <input type="text" name = "mreza">
@@ -43,7 +43,7 @@
         <button type="submit">Pošlji ugib!</button>
     </form>
 
-    % else 
+% else :
 
     <p>Igrate v mrežo {{naslednja}}</p>
     <form action="/igra/{{id_igre}}/" method="post">
@@ -52,7 +52,7 @@
         <button type="submit">Pošlji ugib!</button>
     </form>
 
-    % endif 
+% endif 
     
 
 

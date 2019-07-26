@@ -17,7 +17,7 @@ def index():
 @bottle.post('/igra/')
 def nova_igra():
     id_igre = igra_xo.nova_igra()
-    bottle.redirect('/igra/{0}/'.format(id_igre))
+    bottle.redirect('/igra/{}/'.format(id_igre))
 
 @bottle.get('/igra/<id_igre:int>/')
 def pokazi_igro(id_igre):
@@ -36,7 +36,7 @@ def ugibaj(id_igre):
     stolpec = bottle.request.forms.get("stolpec")
     slaba = igra_xo.poteza_db_sl(id_igre, mreza, vrsta, stolpec)
     naslednja = igra.mreza_naslednja
-    bottle.redirect('/igra/{0}/'.format(id_igre))
+    bottle.redirect('/igra/{}/'.format(id_igre))
 
 @bottle.post('/navodila/')
 def pojdi_navodila():

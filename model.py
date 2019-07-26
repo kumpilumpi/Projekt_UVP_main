@@ -95,7 +95,7 @@ class The_ultimate_game:
         'Premakne za eno naprej kdor je navrsti'
         self.navrsti = 'X' if self.navrsti == 'O' else 'O'
     
-    def poteza(self, mreza, vrsta, stolpec): 
+    def poteza(self, mreza, vrsta, stolpec):  #dela
         'Naredi potezo, nastavi kam se je igralo nazadnje, spremni igralca, preveri mala_zmaga() in mala_neodloceno...'
         self.mreza_zadnja = mreza
         self.vrsta_zadnja = vrsta
@@ -104,14 +104,6 @@ class The_ultimate_game:
         self.mala_nastavi(mreza)
         self.naslednji()
         self.naslednja_poteza()
-
-    #  def stanje(self, mreza, vrsta, stolpec): # delam, poenostavit vmesnik
-    #      #probi nekam stalčit 10, nova mreža, da tega ne bo treba v vmesniku preverjat
-    #      #da vrača konstante da igra. tpl pol ma notr sam u izi if elif statemnte
-    #      'Preveri če so parametri(mreza, vrsta, stolpec) dobri, če je konec igre in naredi potezo.'
-    #      if:
-    #          return 
-    #      else: 
 
     def naslednja_poteza(self): #dela
         'Doloci v katero mrežo se igra naslednje.'
