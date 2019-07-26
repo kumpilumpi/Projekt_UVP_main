@@ -2,13 +2,52 @@
 
 <!DOCTYPE html>
 <html>
+    <style>
+        table, th, td {
+            border: 1px solid black;
+         }        
+    </style>
+
 
 <body>
 
     <h1>The ultimate game</h1>
     
 
-    
+    <table style="width:100%">
+        <tr>
+          <td>{{igra.mala_mreza_0[0]}}
+              {{igra.mala_mreza_0[1]}}
+              {{igra.mala_mreza_0[2]}}
+          </td>
+          <td>{{igra.mala_mreza_1[0]}}
+              {{igra.mala_mreza_1[1]}}
+              {{igra.mala_mreza_1[2]}}
+          </td> 
+          <td>{{igra.mala_mreza_2[0]}}
+              {{igra.mala_mreza_2[1]}}
+              {{igra.mala_mreza_2[2]}}
+          </td>
+        </tr>
+        <tr>
+          <td>{{igra.mala_mreza_3[0]}}
+              {{igra.mala_mreza_3[1]}}
+              {{igra.mala_mreza_3[2]}}
+
+          </td>
+          <td>Smith</td> 
+          <td>50</td>
+        </tr>
+        <tr>
+          <td>Eve</td>
+          <td>Jackson</td> 
+          <td>94</td>
+        </tr>
+    </table>
+
+
+
+
         <p> {{igra.mala_mreza_0[0]}} | {{igra.mala_mreza_1[0]}} | {{igra.mala_mreza_2[0]}} </p>
         <p> {{igra.mala_mreza_0[1]}} | {{igra.mala_mreza_1[1]}} | {{igra.mala_mreza_2[1]}} </p>
         <p> {{igra.mala_mreza_0[2]}} | {{igra.mala_mreza_1[2]}} | {{igra.mala_mreza_2[2]}} </p>
@@ -30,7 +69,7 @@
     <p>Neveljavna poteza!</p>
     <p>Poskusite ponovno.</p>
 
-% endif 
+% end 
     
     <p> Na potezi je {{igra.navrsti}} </p>
 
@@ -43,7 +82,7 @@
         <button type="submit">Pošlji ugib!</button>
     </form>
 
-% else :
+% else:
 
     <p>Igrate v mrežo {{naslednja}}</p>
     <form action="/igra/{{id_igre}}/" method="post">
@@ -52,7 +91,7 @@
         <button type="submit">Pošlji ugib!</button>
     </form>
 
-% endif 
+% end
     
 
 

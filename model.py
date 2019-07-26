@@ -135,7 +135,6 @@ class The_ultimate_game:
                 return True
             elif self.je_polna(0 + i) and self.je_polna(3 + i) and self.je_polna(6 + i) and (self.velika_mreza[0 + i][0][0] == self.velika_mreza[3 + i][0][0] == self.velika_mreza[6 + i][0][0] != '/'):
                 return True
-        
         if self.je_polna(0) and self.je_polna(4) and self.je_polna(8) and (self.velika_mreza[0][0][0] == self.velika_mreza[4][0][0] == self.velika_mreza[8][0][0] != '/'):
             return True
         elif self.je_polna(2) and self.je_polna(4) and self.je_polna(6) and (self.velika_mreza[2][0][0] == self.velika_mreza[4][0][0] == self.velika_mreza[6][0][0] != '/'):

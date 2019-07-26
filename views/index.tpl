@@ -15,7 +15,6 @@
     <button type="submit">Kako sploh igrati? Navodila.</button>
   </form>
 
-  <p>Jaka</p>
 </body>
 
 </html>
