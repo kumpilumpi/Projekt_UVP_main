@@ -14,19 +14,19 @@
     <h1>The ultimate game</h1>
     
 
-    <table style="width:100%">
+    <!-- <table style="width:100%">
         <tr>
-          <td>{{igra.mala_mreza_0[0]}}
-              {{igra.mala_mreza_0[1]}}
-              {{igra.mala_mreza_0[2]}}
+          <td><p>{{igra.mala_mreza_0[0]}}</p>
+            <p>{{igra.mala_mreza_0[1]}}</p>
+            <p>{{igra.mala_mreza_0[2]}}</p>
           </td>
-          <td>{{igra.mala_mreza_1[0]}}
-              {{igra.mala_mreza_1[1]}}
-              {{igra.mala_mreza_1[2]}}
+          <td><p>{{igra.mala_mreza_1[0]}}</p>
+            <p>{{igra.mala_mreza_1[1]}}</p>
+                <p>{{igra.mala_mreza_1[2]}}</p>
           </td> 
-          <td>{{igra.mala_mreza_2[0]}}
-              {{igra.mala_mreza_2[1]}}
-              {{igra.mala_mreza_2[2]}}
+          <td><p>{{igra.mala_mreza_2[0]}}</p>
+            <p>{{igra.mala_mreza_2[1]}}</p>
+                <p>{{igra.mala_mreza_2[2]}}</p>
           </td>
         </tr>
         <tr>
@@ -43,7 +43,7 @@
           <td>Jackson</td> 
           <td>94</td>
         </tr>
-    </table>
+    </table> -->
 
 
 
@@ -67,7 +67,7 @@
 % if slaba: 
 
     <p>Neveljavna poteza!</p>
-    <p>Poskusite ponovno.</p>
+    <p>Poskusite ponovno.</p>    
 
 % end 
     

@@ -34,8 +34,10 @@ def ugibaj(id_igre):
     mreza = bottle.request.forms.get("mreza")
     vrsta = bottle.request.forms.get("vrsta")
     stolpec = bottle.request.forms.get("stolpec")
-    slaba = igra_xo.poteza_db_sl(id_igre, mreza, vrsta, stolpec) #hmmmmmm
+    slaba = igra_xo.poteza_db_sl(id_igre, int(mreza), int(vrsta), int(stolpec)) #naredi potezo a samo prvo??
+    print(slaba) ##
     naslednja = igra.mreza_naslednja
+    print(naslednja)
     bottle.redirect('/igra/{}/'.format(id_igre))
 
 @bottle.post('/navodila/')

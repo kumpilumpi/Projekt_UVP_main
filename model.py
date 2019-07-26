@@ -90,7 +90,6 @@ class The_ultimate_game:
                     return False
         return True
 
-
     def naslednji(self): #dela
         'Premakne za eno naprej kdor je navrsti'
         self.navrsti = 'X' if self.navrsti == 'O' else 'O'
@@ -148,10 +147,9 @@ class The_ultimate_game:
             if not self.je_polna(i):
                 return False
         else: 
-            return True 
+            return True  
 
 
-ZACETEK = 'S'    
 
 
 class Igra_xo:
@@ -168,16 +166,16 @@ class Igra_xo:
         return id_igre
 
     def poteza_db_sl(self, id_igre, mreza, vrsta, stolpec):
-        'Preveri, če je poteza dobra, jo naredi vrne True, ali slaba vrne Falses.'
+        'Preveri, če je poteza dobra, jo naredi vrne True, ali slaba vrne False.'
         igra = self.igre[id_igre]
         if igra.dobr_vnos(mreza, vrsta, stolpec):
             igra.poteza(mreza, vrsta, stolpec)
             self.igre[id_igre] = igra
-            return True
-        else:
             return False
+        else:
+            return True
 
-    def zmaga(self, id_igre):
+    def zmaga(self, id_igre): #Ne vem če je že kje uporabljeno
         'Preveri, če je zmaga.'
         igra = self.igre[id_igre]
         return igra.velika_zmaga()
@@ -191,7 +189,7 @@ class Igra_xo:
 # igra = Igra_xo()
 # moj_id_igre = igra.nova_igra()
 # print(igra.igre[moj_id_igre])
-# print(igra.poteza_db_sl(moj_id_igre, 1, 2, 2))
+# print(igra.poteza_db_sl(moj_id_igre, 1, 1, 1))
 # print(igra.igre[moj_id_igre])
 # print(igra.igre)
 # print(igra.igre[moj_id_igre].mreza_natisni())
