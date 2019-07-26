@@ -31,9 +31,9 @@ def pokazi_igro(id_igre):
 @bottle.post('/igra/<id_igre:int>/')
 def ugibaj(id_igre):
     igra = igra_xo.igre[id_igre]
-    mreza = bottle.request.forms.getunicode("mreza")
-    vrsta = bottle.request.forms.getunicode("vrsta")
-    stolpec = bottle.request.forms.getunicode("stolpec")
+    mreza = bottle.request.forms.get("mreza")
+    vrsta = bottle.request.forms.get("vrsta")
+    stolpec = bottle.request.forms.get("stolpec")
     slaba = igra_xo.poteza_db_sl(id_igre, mreza, vrsta, stolpec) #hmmmmmm
     naslednja = igra.mreza_naslednja
     bottle.redirect('/igra/{}/'.format(id_igre))

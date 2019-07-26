@@ -150,19 +150,19 @@ class The_ultimate_game:
         else: 
             return True 
 
-    
+
+ZACETEK = 'S'    
+
+
 class Igra_xo:
     def __init__(self):
-        self.igre = []
+        self.igre = [] # nazaj na seznamih bomo vidl   #popravi kodo, da povsod slovarji
 
-    # def prost_id_igre(self):
-    #     if len(self.igre) == 0:
-    #         return 0
-    #     else:
-    #         return max(self.igre) + 1
-
+    def prost_id_igre(self):
+        return 0 if len(self.igre) == 0 else len(self.igre)
+            
     def nova_igra(self):
-        id_igre = len(self.igre) #težave z dolžino seznama
+        id_igre = self.prost_id_igre()
         igra = The_ultimate_game()
         self.igre.append(igra)
         return id_igre
@@ -172,6 +172,7 @@ class Igra_xo:
         igra = self.igre[id_igre]
         if igra.dobr_vnos(mreza, vrsta, stolpec):
             igra.poteza(mreza, vrsta, stolpec)
+            self.igre[id_igre] = igra
             return True
         else:
             return False
@@ -179,13 +180,21 @@ class Igra_xo:
     def zmaga(self, id_igre):
         'Preveri, če je zmaga.'
         igra = self.igre[id_igre]
-        return igra.velika_zmaga
+        return igra.velika_zmaga()
 
-    def prosto_omejeno(self, id_igre):
-        'Preveri, naslednjo potezo.'
-        igra = self.igre[id_igre]
-        return igra.naslednja_mreza()
+    # def prosto_omejeno(self, id_igre): #enkrat napisu zaenkrat  ne rabim neikjer drugje
+    #     'Preveri, naslednjo potezo.'
+    #     igra = self.igre[id_igre]
+    #     return igra.naslednja_mreza()
 
+
+# igra = Igra_xo()
+# moj_id_igre = igra.nova_igra()
+# print(igra.igre[moj_id_igre])
+# print(igra.poteza_db_sl(moj_id_igre, 1, 2, 2))
+# print(igra.igre[moj_id_igre])
+# print(igra.igre)
+# print(igra.igre[moj_id_igre].mreza_natisni())
 
 
 
