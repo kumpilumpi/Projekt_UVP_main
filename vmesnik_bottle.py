@@ -3,9 +3,6 @@
 import bottle
 import model
 
-slaba = False
-naslednja = 10
-
 bottle.TEMPLATE_PATH.insert(0, 'C:\\Users\\jakak\\Desktop\\Git\\Projekt_UVP\\views')
 
 igra_xo = model.Igra_xo()
@@ -23,26 +20,28 @@ def nova_igra():
 def pokazi_igro(id_igre):
     return bottle.template('igra.tpl', 
     igra = igra_xo.igre[id_igre] ,
-    naslednja = naslednja,
-    slaba = slaba,
+    naslednja = igra_xo.mreza_naslednja_2(id_igre),
+    slaba = igra_xo.slaba_fun(id_igre), 
     zmaga = igra_xo.zmaga(id_igre),
     id_igre = id_igre) 
 
 @bottle.post('/igra/<id_igre:int>/')
 def ugibaj(id_igre):
-    igra = igra_xo.igre[id_igre]
     mreza = bottle.request.forms.get("mreza")
+
+    if mreza is None : # če je mreža že določena
+        mreza = igra_xo.mreza_naslednja_2(id_igre) 
+    else:
+        pass
+
     vrsta = bottle.request.forms.get("vrsta")
     stolpec = bottle.request.forms.get("stolpec")
-    slaba = igra_xo.poteza_db_sl(id_igre, int(mreza), int(vrsta), int(stolpec)) #naredi potezo a samo prvo??
-    print(slaba) ##
-    naslednja = igra.mreza_naslednja
-    print(naslednja)
+    igra_xo.poteza_db_sl(id_igre, int(mreza), int(vrsta), int(stolpec)) #napaka int mreza , pomoje da prazno vrednost
     bottle.redirect('/igra/{}/'.format(id_igre))
 
 @bottle.post('/navodila/')
 def pojdi_navodila():
-    #stran z navodili
+    'Stran z navodili.'
     bottle.redirect('/navodila/')
 
 @bottle.get('/navodila/')

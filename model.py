@@ -1,11 +1,5 @@
 #The Ultimate tictac game
 
-DOBRO = 'D'
-SLABO = 'S'
-PROSTO = 'P'
-OMEJENO = 'Z'
-ZMAGA = 'W'
-
 
 class The_ultimate_game:
 
@@ -27,7 +21,9 @@ class The_ultimate_game:
         self.stolpec_zadnja = None
         self.navrsti = 'X'
         self.velika_mreza = [self.mala_mreza_0, self.mala_mreza_1, self.mala_mreza_2, self.mala_mreza_3 ,self.mala_mreza_4, self.mala_mreza_5, self.mala_mreza_6, self.mala_mreza_7, self.mala_mreza_8,]
-    
+
+        self.slaba = True #za bottle_vmesnik
+
     def mala_mreza_ustvari(self): #dela
         'Ustvari mrezo 3*3.'
         mreza_n = []
@@ -49,8 +45,14 @@ class The_ultimate_game:
     def dobr_vnos(self, mreza, vrsta, stolpec): #dela
         'Preveri, če je vnos dobr. Preveri, da je izbrana 0, da so parametri vredu in da noben ni na mreži še zmagal.'
         try:
-            return True if (vrsta < 3) and (stolpec < 3) and (mreza < 9) and (self.velika_mreza[mreza][vrsta][stolpec] == '-') else False
+            if (vrsta < 3) and (stolpec < 3) and (mreza < 9) and (self.velika_mreza[mreza][vrsta][stolpec] == '-'):
+                self.slaba = True #sprememba za bottle vmesnik
+                return True 
+            else:
+                self.slaba = False
+                return False
         except: # Ker drgac javlja list index out of range ali če index ni dobr (npr. ni stevilka)
+            self.slaba = False
             return False
         
     def polna_mreza(self, mreza, nastavi): #dela
@@ -152,9 +154,12 @@ class The_ultimate_game:
 
 
 
+
 class Igra_xo:
     def __init__(self):
-        self.igre = [] # nazaj na seznamih bomo vidl   #popravi kodo, da povsod slovarji
+        self.igre = [] # Probamo shrant potrebne stvari kr v spremenljivke objekta #Probamo slovar s tuplom (Slabo, naslednja mreža)
+        self.slaba = False
+
 
     def prost_id_igre(self):
         return 0 if len(self.igre) == 0 else len(self.igre)
@@ -166,19 +171,31 @@ class Igra_xo:
         return id_igre
 
     def poteza_db_sl(self, id_igre, mreza, vrsta, stolpec):
-        'Preveri, če je poteza dobra, jo naredi vrne True, ali slaba vrne False.'
+        'Preveri, če je poteza dobra, jo naredi spremeni slaba v False, ali  če je poteza slaba spremeni slaba v True.'
         igra = self.igre[id_igre]
         if igra.dobr_vnos(mreza, vrsta, stolpec):
             igra.poteza(mreza, vrsta, stolpec)
             self.igre[id_igre] = igra
-            return False
+            self.slaba =  False
+            return
         else:
-            return True
+            self.slaba = True
+            return
 
     def zmaga(self, id_igre): #Ne vem če je že kje uporabljeno
         'Preveri, če je zmaga.'
         igra = self.igre[id_igre]
         return igra.velika_zmaga()
+    
+    def mreza_naslednja_2(self, id_igre): #ker se spremenljivke v bottlu ne prepošljejo 
+        'V katero mrežo se igra naslednje.'
+        igra = self.igre[id_igre]
+        return igra.mreza_naslednja
+
+    def slaba_fun(self, id_igre):
+        'Vrne atribut slaba od igra.'
+        igra = self.igre[id_igre]
+        return igra.slaba
 
     # def prosto_omejeno(self, id_igre): #enkrat napisu zaenkrat  ne rabim neikjer drugje
     #     'Preveri, naslednjo potezo.'

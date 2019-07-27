@@ -64,7 +64,7 @@
 
     <hr>
 
-% if slaba: 
+% if not slaba: 
 
     <p>Neveljavna poteza!</p>
     <p>Poskusite ponovno.</p>    
