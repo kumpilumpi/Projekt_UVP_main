@@ -71,9 +71,19 @@
 
 % end 
     
-    <p> Na potezi je {{igra.navrsti}} </p>
+   
 
-% if naslednja == 10:
+% if zmaga:
+
+    % igra.naslednji()
+    
+    <h1> Zmagal je igralec {{igra.navrsti}} </h1>
+
+
+
+
+% elif naslednja == 10:
+    <p> Na potezi je {{igra.navrsti}} </p>
 
     <form action="/igra/{{id_igre}}/" method="post">
         Mreža: <input type="text" name = "mreza">
@@ -83,6 +93,7 @@
     </form>
 
 % else:
+    <p> Na potezi je {{igra.navrsti}} </p>
 
     <p>Igrate v mrežo {{naslednja}}</p>
     <form action="/igra/{{id_igre}}/" method="post">
