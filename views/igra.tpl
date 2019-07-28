@@ -3,52 +3,81 @@
 <!DOCTYPE html>
 <html>
     <style>
-        table, th, td {
-            border: 1px solid black;
-         }        
+        .center {text-align: center;}
+        th, td {padding: 15px;}
+        table, th, td {border: 1px solid black;}
+        #velika {height: 300px; width: 300px; text-align: center; margin: auto;}
+        .mala {border-collapse: collapse; height: 100px; width: 100px;}        
     </style>
 
 
 <body>
 
-    <h1>The ultimate game</h1>
+    <h1 class='center' >The ultimate game</h1>
     
+<!------------ Zacetek tabele ------------>
+    <table id='velika'>
 
-    <!-- <table style="width:100%">
+    <!-- Prva vrstica -->
         <tr>
-          <td><p>{{igra.mala_mreza_0[0]}}</p>
-            <p>{{igra.mala_mreza_0[1]}}</p>
-            <p>{{igra.mala_mreza_0[2]}}</p>
-          </td>
-          <td><p>{{igra.mala_mreza_1[0]}}</p>
-            <p>{{igra.mala_mreza_1[1]}}</p>
-                <p>{{igra.mala_mreza_1[2]}}</p>
-          </td> 
-          <td><p>{{igra.mala_mreza_2[0]}}</p>
-            <p>{{igra.mala_mreza_2[1]}}</p>
-                <p>{{igra.mala_mreza_2[2]}}</p>
-          </td>
+% for mreza in range(3):
+            <td>
+
+                <table class='mala'>
+    % for row in igra.velika_mreza[mreza]:
+                    <tr>
+        % for i in row:
+                        <td> {{i}} </td>
+        % end
+                    </tr>
+    % end
+                </table>
+            </td>
+%end
         </tr>
+    <!-- Konec prva vrstica -->
+    
+    <!-- Druga vrstica -->    
         <tr>
-          <td>{{igra.mala_mreza_3[0]}}
-              {{igra.mala_mreza_3[1]}}
-              {{igra.mala_mreza_3[2]}}
-
-          </td>
-          <td>Smith</td> 
-          <td>50</td>
+% for mreza in range(3, 6):
+            <td>
+    
+                <table class='mala'>
+    % for row in igra.velika_mreza[mreza]:
+                    <tr>
+        % for i in row:
+                        <td> {{i}} </td>
+        % end
+                    </tr>
+    % end
+                </table>
+            </td>
+%end
         </tr>
+        <!-- Konec druga vrstica -->
+
+        <!-- Tretja vrstica -->
         <tr>
-          <td>Eve</td>
-          <td>Jackson</td> 
-          <td>94</td>
+% for mreza in range(6, 9):
+            <td>
+    
+                <table class='mala'>
+    % for row in igra.velika_mreza[mreza]:
+                    <tr>
+        % for i in row:
+                        <td> {{i}} </td>
+        % end
+                    </tr>
+    % end
+                </table>
+            </td>
+%end
         </tr>
-    </table> -->
+<!------------ Konec tabele ------------>
 
 
-
-
-        <p> {{igra.mala_mreza_0[0]}} | {{igra.mala_mreza_1[0]}} | {{igra.mala_mreza_2[0]}} </p>
+<!------------ Star način tiskanja mreže ------------>
+        <!-- <p> {{igra.mala_mreza_0[0]}} | {{igra.mala_mreza_1[0]}} | {{igra.mala_mreza_2[0]}} </p>
         <p> {{igra.mala_mreza_0[1]}} | {{igra.mala_mreza_1[1]}} | {{igra.mala_mreza_2[1]}} </p>
         <p> {{igra.mala_mreza_0[2]}} | {{igra.mala_mreza_1[2]}} | {{igra.mala_mreza_2[2]}} </p>
         <hr>
@@ -58,16 +87,16 @@
         <hr>
         <p> {{igra.mala_mreza_6[0]}} | {{igra.mala_mreza_7[0]}} | {{igra.mala_mreza_8[0]}} </p>
         <p> {{igra.mala_mreza_6[1]}} | {{igra.mala_mreza_7[1]}} | {{igra.mala_mreza_8[1]}} </p>
-        <p> {{igra.mala_mreza_6[2]}} | {{igra.mala_mreza_7[2]}} | {{igra.mala_mreza_8[2]}} </p>
-
+        <p> {{igra.mala_mreza_6[2]}} | {{igra.mala_mreza_7[2]}} | {{igra.mala_mreza_8[2]}} </p> -->
+<!------------ Star način tiskanja mreže ------------>
 
 
     <hr>
 
 % if not slaba: 
 
-    <p>Neveljavna poteza!</p>
-    <p>Poskusite ponovno.</p>    
+    <p class='center'>Neveljavna poteza!</p>
+    <p class='center'>Poskusite ponovno.</p>    
 
 % end 
     
@@ -76,31 +105,32 @@
 % if zmaga:
 
     % igra.naslednji()
-    
-    <h1> Zmagal je igralec {{igra.navrsti}} </h1>
-
-
-
+    <h1 class='center'> Zmagal je igralec {{igra.navrsti}} </h1>
 
 % elif naslednja == 10:
-    <p> Na potezi je {{igra.navrsti}} </p>
 
-    <form action="/igra/{{id_igre}}/" method="post">
+    <p class='center'> Na potezi je {{igra.navrsti}} </p>
+    <p class='center'>
+    <form class='center' action="/igra/{{id_igre}}/" method="post">
         Mreža: <input type="text" name = "mreza">
         Vrsta: <input type="text" name = "vrsta">
         Stolpec: <input type="text" name = "stolpec">
         <button type="submit">Pošlji ugib!</button>
     </form>
+    </p>
 
 % else:
-    <p> Na potezi je {{igra.navrsti}} </p>
 
-    <p>Igrate v mrežo {{naslednja}}</p>
-    <form action="/igra/{{id_igre}}/" method="post">
+    <p class='center'> Na potezi je {{igra.navrsti}} </p>
+
+    <p class='center'>Igrate v mrežo <b>{{naslednja}}</b></p>
+    <p class='center'>
+    <form class='center' action="/igra/{{id_igre}}/" method="post">
         Vrsta: <input type="text" name = "vrsta">
         Stolpec: <input type="text" name = "stolpec">
         <button type="submit">Pošlji ugib!</button>
     </form>
+    </p>
 
 % end
     
