@@ -111,27 +111,27 @@
 
     <p class='center'> Na potezi je {{igra.navrsti}} </p>
     <p> </p>
-    <p class='center'>
+
     <form class='center' action="/igra/{{id_igre}}/" method="post">
         Mreža: <input type="text" name = "mreza">
         Vrsta: <input type="text" name = "vrsta">
         Stolpec: <input type="text" name = "stolpec">
         <button type="submit">Pošlji ugib!</button>
     </form>
-    </p>
+
 
 % else:
 
     <p class='center'> Na potezi je {{igra.navrsti}} </p>
 
     <p class='center'>Igrate v mrežo <b>{{naslednja}}</b></p>
-    <p class='center'>
+
     <form class='center' action="/igra/{{id_igre}}/" method="post">
         Vrsta: <input type="text" name = "vrsta">
         Stolpec: <input type="text" name = "stolpec">
         <button type="submit">Pošlji ugib!</button>
     </form>
-    </p>
+
 
 % end
     
