@@ -4,9 +4,9 @@
 <html>
     <style>
         .center {text-align: center;}
-        th, td {padding: 15px;}
-        table, th, td {border: 1px solid black;}
-        #velika {height: 300px; width: 300px; text-align: center; margin: auto;}
+        /* th, td {padding: 5px;} */
+        table, th, td {border: 1px solid black; table-layout:fixed;}
+        #velika {height: 315px; width: 315px; text-align: center; margin: auto;}
         .mala {border-collapse: collapse; height: 100px; width: 100px;}        
     </style>
 
@@ -110,6 +110,7 @@
 % elif naslednja == 10:
 
     <p class='center'> Na potezi je {{igra.navrsti}} </p>
+    <p> </p>
     <p class='center'>
     <form class='center' action="/igra/{{id_igre}}/" method="post">
         Mreža: <input type="text" name = "mreza">
