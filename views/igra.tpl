@@ -6,7 +6,7 @@
         .center {text-align: center;}
         /* th, td {padding: 5px;} */
         table, th, td {border: 1px solid black; table-layout:fixed;}
-        #velika {height: 315px; width: 315px; text-align: center; margin: auto;}
+        #velika {height: 315px; width: 315px; text-align: center; margin: auto; position: relative;}
         .mala {border-collapse: collapse; height: 100px; width: 100px;}        
     </style>
 
@@ -16,6 +16,7 @@
     <h1 class='center' >The ultimate game</h1>
     
 <!------------ Zacetek tabele ------------>
+    <p>
     <table id='velika'>
 
     <!-- Prva vrstica -->
@@ -73,6 +74,7 @@
             </td>
 %end
         </tr>
+    </p>
 <!------------ Konec tabele ------------>
 
 
@@ -90,6 +92,7 @@
         <p> {{igra.mala_mreza_6[2]}} | {{igra.mala_mreza_7[2]}} | {{igra.mala_mreza_8[2]}} </p> -->
 <!------------ Star način tiskanja mreže ------------>
 
+<br>
 
     <hr>
 
@@ -106,32 +109,34 @@
 
     % igra.naslednji()
     <h1 class='center'> Zmagal je igralec {{igra.navrsti}} </h1>
+    <p>Čestitamo za zmago !!!!!</p>
+
 
 % elif naslednja == 10:
 
     <p class='center'> Na potezi je {{igra.navrsti}} </p>
-    <p> </p>
-
-    <form class='center' action="/igra/{{id_igre}}/" method="post">
+    
+    <p class='center'>
+    <form action="/igra/{{id_igre}}/" method="post">
         Mreža: <input type="text" name = "mreza">
         Vrsta: <input type="text" name = "vrsta">
         Stolpec: <input type="text" name = "stolpec">
         <button type="submit">Pošlji ugib!</button>
     </form>
-
+    </p>
 
 % else:
 
     <p class='center'> Na potezi je {{igra.navrsti}} </p>
 
     <p class='center'>Igrate v mrežo <b>{{naslednja}}</b></p>
-
-    <form class='center' action="/igra/{{id_igre}}/" method="post">
+    <p class='center'>
+    <form action="/igra/{{id_igre}}/" method="post">
         Vrsta: <input type="text" name = "vrsta">
         Stolpec: <input type="text" name = "stolpec">
         <button type="submit">Pošlji ugib!</button>
     </form>
-
+    </p>
 
 % end
     
