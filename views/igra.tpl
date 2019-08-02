@@ -96,7 +96,9 @@
 
     <hr>
 
-% if not slaba: 
+<!-- Ne izpisuje vsakič napake -->
+
+% if slaba: 
 
     <p class='center'>Neveljavna poteza!</p>
     <p class='center'>Poskusite ponovno.</p>    

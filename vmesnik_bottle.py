@@ -21,28 +21,30 @@ def pokazi_igro(id_igre):
     return bottle.template('igra.tpl', 
     igra = igra_xo.igre[id_igre] ,
     naslednja = igra_xo.mreza_naslednja_2(id_igre),
-    slaba = igra_xo.slaba_fun(id_igre), # to bi moglo delat vredu
+    slaba = igra_xo.slaba_fun(id_igre),
     zmaga = igra_xo.zmaga(id_igre),
     id_igre = id_igre) 
 
-@bottle.post('/igra/<id_igre:int>/')
+@bottle.post('/igra/<id_igre:int>/') # Največ težav
 def ugibaj(id_igre):
     mreza = bottle.request.forms.get("mreza")
+    vrsta = bottle.request.forms.get("vrsta")
+    stolpec = bottle.request.forms.get("stolpec")
 
     if mreza is None : # če je mreža že določena
         mreza = igra_xo.mreza_naslednja_2(id_igre) 
     else:
         pass
 
-    vrsta = bottle.request.forms.get("vrsta")
-    
-    stolpec = bottle.request.forms.get("stolpec")
-
+    # Tukaj ne izpiše napake saj ne spremeni spremenljivke slaba
     try: #napaka, če ni int mreza ali je kliknjen enter ---> neki smo popravl dela na pol ne ispiše napake
         igra_xo.poteza_db_sl(id_igre, int(mreza), int(vrsta), int(stolpec)) 
     except:
+        igra = igra_xo.igre[id_igre]
+        igra.slaba = True #spremeni slaba spremnljivka v classu The_ultimate_game
+        igra_xo.igre[id_igre] = igra
         pass
-    igra_xo.slaba_fun(id_igre)
+    # igra_xo.slaba_fun(id_igre) # ??? samo vrne Slaba nič ne spremeni
     bottle.redirect('/igra/{}/'.format(id_igre))
 
 @bottle.post('/navodila/')

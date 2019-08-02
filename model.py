@@ -20,9 +20,9 @@ class The_ultimate_game:
         self.vrsta_zadnja = None
         self.stolpec_zadnja = None
         self.navrsti = 'X'
-        self.velika_mreza = [self.mala_mreza_0, self.mala_mreza_1, self.mala_mreza_2, self.mala_mreza_3 ,self.mala_mreza_4, self.mala_mreza_5, self.mala_mreza_6, self.mala_mreza_7, self.mala_mreza_8,]
+        self.velika_mreza = [self.mala_mreza_0, self.mala_mreza_1, self.mala_mreza_2, self.mala_mreza_3 ,self.mala_mreza_4, self.mala_mreza_5, self.mala_mreza_6, self.mala_mreza_7, self.mala_mreza_8]
 
-        self.slaba = True #za bottle_vmesnik
+        self.slaba = False #za bottle_vmesnik
 
     def mala_mreza_ustvari(self): #dela
         'Ustvari mrezo 3*3.'
@@ -46,13 +46,13 @@ class The_ultimate_game:
         'Preveri, če je vnos dobr. Preveri, da je izbrana 0, da so parametri vredu in da noben ni na mreži še zmagal.'
         try:
             if (vrsta < 3) and (stolpec < 3) and (mreza < 9) and (self.velika_mreza[mreza][vrsta][stolpec] == '-'):
-                self.slaba = True #sprememba za bottle vmesnik
+                self.slaba = False #sprememba za bottle vmesnik
                 return True 
             else:
-                self.slaba = False
+                self.slaba = True
                 return False
         except: # Ker drgac javlja list index out of range ali če index ni dobr (npr. ni stevilka)
-            self.slaba = False
+            self.slaba = True
             return False
         
     def polna_mreza(self, mreza, nastavi): #dela
@@ -157,13 +157,12 @@ class The_ultimate_game:
 
 class Igra_xo:
     def __init__(self):
-        self.igre = [] # Probamo shrant potrebne stvari kr v spremenljivke objekta #Probamo slovar s tuplom (Slabo, naslednja mreža)
-        self.slaba = False
-
+        self.igre = [] 
+        # self.slaba = False  # je že slaba v classu The_ultimate_game
 
     def prost_id_igre(self):
         return 0 if len(self.igre) == 0 else len(self.igre)
-            
+                
     def nova_igra(self):
         id_igre = self.prost_id_igre()
         igra = The_ultimate_game()
@@ -175,14 +174,15 @@ class Igra_xo:
         igra = self.igre[id_igre]
         if igra.dobr_vnos(mreza, vrsta, stolpec):
             igra.poteza(mreza, vrsta, stolpec)
+            # igra.slaba =  False
             self.igre[id_igre] = igra
-            self.slaba =  False
             return
         else:
-            self.slaba = True
+            igra.slaba = True       
+            self.igre[id_igre] = igra
             return
 
-    def zmaga(self, id_igre): #Ne vem če je že kje uporabljeno
+    def zmaga(self, id_igre): 
         'Preveri, če je zmaga.'
         igra = self.igre[id_igre]
         return igra.velika_zmaga()
@@ -196,6 +196,8 @@ class Igra_xo:
         'Vrne atribut slaba od igra.'
         igra = self.igre[id_igre]
         return igra.slaba
+
+
 
     # def prosto_omejeno(self, id_igre): #enkrat napisu zaenkrat  ne rabim neikjer drugje
     #     'Preveri, naslednjo potezo.'
